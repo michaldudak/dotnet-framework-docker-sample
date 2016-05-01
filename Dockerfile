@@ -1,10 +1,8 @@
 FROM michaldudak/asp-iis
 
-RUN mkdir WebApp
+RUN powershell -Command Remove-Item C:\inetpub\wwwroot\* -Recurse -Force
 
-COPY ./NetFrameworkWebApp /WebApp
-WORKDIR /WebApp
-
-RUN powershell New-WebApplication -Site 'Default Web Site' -ApplicationPool 'DefaultAppPool' -Name 'WebApp' -PhysicalPath 'C:\WebApp'
+WORKDIR /inetpub/wwwroot
+COPY ./NetFrameworkWebApp .
 
 ENTRYPOINT powershell
