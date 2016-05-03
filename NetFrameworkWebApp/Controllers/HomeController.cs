@@ -12,8 +12,7 @@ namespace NetFrameworkWebApp.Controllers
 
 		public ActionResult About()
 		{
-			ViewBag.Message = $"Running on {Environment.MachineName}";
-
+			ViewBag.Message = $"Running on {Environment.MachineName}. OS version: {Environment.OSVersion}";
 			return View();
 		}
 	}
